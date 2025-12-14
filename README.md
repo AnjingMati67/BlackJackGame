@@ -1,22 +1,22 @@
 # Topic Integration in Blackjack JavaFX
 
 ## Topic 1: Java overview, JVM, OOP concepts
-- **Where**: Throughout the project, especially in `Card.java`, `Deck.java`, `Player.java`, `Dealer.java`, and `BlackjackGUI.java`  
+- **Where**: Throughout the project, especially in `Card.java`, `Deck.java`, `Player.java`, `Dealer.java`, and `BlackjackGame.java`  
 - **Demonstrated**: Object-Oriented Programming: The project models real-world entities like cards, decks, players, and dealers. Encapsulation: Private fields with public getters/setters. Abstraction: Common behavior for players is represented in the `Player` class, extended by `Dealer`.  
 - **Example**: `Player` class with private fields `hand` and `chips` and public methods `addCard()`, `handValue()`, and `getChips()`.  
 
 ## Topic 2: Variables, types, input/output
-- **Where**: `BlackjackGUI.java`, `Player.java`, `Dealer.java`  
+- **Where**: `BlackjackGame.java`, `Player.java`, `Dealer.java`  
 - **Demonstrated**: Primitive types: `int` for chip amounts, `boolean` for game state flags. Reference types: `String`, `ArrayList<Card>`, `List<Card>`. Input: Text input for bets via JavaFX TextFields. Output: JavaFX labels and console logs to display hand values, chips, and game results.  
-- **Example**: `private int chips;` in `Player.java`, `TextField betInput = new TextField();` in `BlackjackGUI.java`.  
+- **Example**: `private int chips;` in `Player.java`, `TextField betInput = new TextField();` in `BlackjackGame.java`.  
 
 ## Topic 3: Control flow: if, switch, loops
-- **Where**: `BlackjackGUI.java`, `Player.java`, `Dealer.java`  
+- **Where**: `BlackjackGame.java`, `Player.java`, `Dealer.java`  
 - **Demonstrated**: If-else statements: Checking busts, blackjack, or win conditions. Switch statements: Optional, e.g., handling player choices like “hit” or “stand”. Loops: Iterating over hands in arrays/ArrayLists to calculate totals and display cards.  
 - **Example**: `for (Card c : hand) total += c.getValue();` in `Player.handValue()`.  
 
 ## Topic 4: Exceptions (intro), debugging
-- **Where**: `BlackjackGUI.java`  
+- **Where**: `BlackjackGame.java`  
 - **Demonstrated**: Throwing exceptions for invalid bet amounts. Handling invalid input with try-catch blocks.  
 - **Example**: 
 try {
@@ -64,7 +64,7 @@ public class Dealer extends Player {
     }
 }
 ## Topic 9: Files
-- **Where**: BlackjackGUI.java  
+- **Where**: BlackjackGame.java  
 - **Demonstrated**: Saving and loading player chips using `BufferedReader` and `BufferedWriter`. Handling file I/O exceptions with try-catch blocks. File persistence allows the player to continue their chips after closing the game.  
 - **Example**: 
 Path saveFile = Paths.get("playerChips.txt");
@@ -74,7 +74,7 @@ try (BufferedWriter writer = Files.newBufferedWriter(saveFile)) {
     e.printStackTrace();
 }
 ## Topic 10: JavaFX
-- **Where**: BlackjackGUI.java  
+- **Where**: BlackjackGame.java  
 - **Demonstrated**: JavaFX Application lifecycle using `start(Stage primaryStage)`. UI components include Buttons, Labels, TextFields, HBox/VBox, and Alerts. Event handling for player actions like "Hit", "Stand", and "Bet". Scene and Stage management with dynamic updates to the UI.  
 - **Example**: 
 hitButton.setOnAction(e -> playerHits());
@@ -89,7 +89,7 @@ if (bet > player.getChips()) {
     return;
 }
 ## Topic 12: Multithreading
-- **Where**: Optional background autosave in BlackjackGUI.java  
+- **Where**: Optional background autosave in BlackjackGame.java  
 - **Demonstrated**: Background thread periodically saves chips to file without freezing the UI. Uses `Platform.runLater()` to update UI safely from threads. Thread runs continuously while the application is active.  
 - **Example**: 
 Thread autosaveThread = new Thread(() -> {
